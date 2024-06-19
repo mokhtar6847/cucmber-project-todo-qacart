@@ -1,5 +1,6 @@
 package com.qacart.todo.steps;
 
+import com.qacart.todo.factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,9 +17,7 @@ public class UserSteps {
 
     @Given("User is at the login page")
     public void isUserAtTheLoginPage(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver = new DriverFactory().getDriver();
         driver.get("https://todo.qacart.com/");
     }
 
