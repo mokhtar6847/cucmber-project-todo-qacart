@@ -1,6 +1,8 @@
 package com.qacart.todo.steps;
 
+import com.qacart.todo.base.BasePage;
 import com.qacart.todo.factory.DriverFactory;
+import com.qacart.todo.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,26 +15,24 @@ import java.time.Duration;
 
 public class UserSteps {
     WebDriver driver;
-
+    LoginPage object;
 
     @Given("User is at the login page")
     public void isUserAtTheLoginPage(){
         driver = new DriverFactory().getDriver();
-        driver.get("https://todo.qacart.com/");
+        object = new LoginPage(driver);
+        object.load("https://todo.qacart.com/");
     }
 
     @When("User fills the email and password and login")
     public void UserFillsEmailAndPassword() {
-        driver.findElement(By.cssSelector("[data-testid=email]")).sendKeys("mokhtarmetehri@yahoo.fr");
-        driver.findElement(By.cssSelector("[data-testid=password]")).sendKeys("mokhtar93");
-        driver.findElement(By.cssSelector("[data-testid=submit]")).click();
+        object.login("mokhtarmetehri@yahoo.fr", "mokhtar93");
     }
 
     @Then("Welcome message should be displayed")
     public void IsWelcomeMessageDisplayed(){
         boolean isWelcomeDisplayed = driver.findElement(By.cssSelector("[data-testid=welcome]")).isDisplayed();
         Assert.assertTrue(isWelcomeDisplayed);
-        driver.quit();
 
     }
 }

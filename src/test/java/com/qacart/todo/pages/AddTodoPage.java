@@ -10,9 +10,12 @@ public class AddTodoPage extends BasePage {
         super(driver);
     }
 
-    private By newTodoInput = By.cssSelector("[data-testid=new-todo]");
-    private By todoSubmit = By.cssSelector("[data-testid=submit-newTask]");
+    private final By newTodoInput = By.cssSelector("[data-testid=new-todo]");
+    private final By todoSubmit = By.cssSelector("[data-testid=submit-newTask]");
 
-
+    public void addTodo(String item){
+        driver.findElement(newTodoInput).sendKeys(item);
+        driver.findElement(todoSubmit).click();
+    }
 
 }

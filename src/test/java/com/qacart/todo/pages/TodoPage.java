@@ -9,9 +9,22 @@ public class TodoPage extends BasePage {
         super(driver);
     }
 
-    private By welcomeMessage = By.cssSelector("[data-testid=welcome]");
+    private final By welcomeMessage = By.cssSelector("[data-testid=welcome]");
 
-    private By addButton = By.cssSelector("[data-testid=add]");
+    private final By plusButton = By.cssSelector("[data-testid=add]");
 
+    private By TodoItem = By.cssSelector("[data-testid=todo-item]");
+
+    public boolean isWelcomeMessageDisplayed(){
+        return driver.findElement(welcomeMessage).isDisplayed();
+    }
+
+    public void plusButtonClick(){
+        driver.findElement(plusButton).click();
+    }
+
+    public String getLastTodoText(){
+        return driver.findElements(TodoItem).get(0).getText();
+    }
 
 }

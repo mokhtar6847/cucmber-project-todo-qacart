@@ -10,8 +10,14 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    private By emailInput = By.cssSelector("[data-testid=email]");
-    private By passwordInput = By.cssSelector("[data-testid=password]");
-    private By submitButton = By.cssSelector("[data-testid=submit]");
+    private final By emailInput = By.cssSelector("[data-testid=email]");
+    private final By passwordInput = By.cssSelector("[data-testid=password]");
+    private final By submitButton = By.cssSelector("[data-testid=submit]");
+
+    public void login(String email, String password){
+        driver.findElement(emailInput).sendKeys(email);
+        driver.findElement(passwordInput).sendKeys(password);
+        driver.findElement(submitButton).click();
+    }
 
 }
