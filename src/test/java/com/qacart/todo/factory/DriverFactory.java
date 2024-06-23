@@ -7,9 +7,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public class DriverFactory {
-    private static WebDriver driver;
+//    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public WebDriver initDriver(){
+        WebDriver driver;
         String browser = System.getProperty("browser", "CHROME");
         switch(browser){
             case "CHROME" -> {
@@ -24,10 +26,11 @@ public class DriverFactory {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        DriverFactory.driver.set(driver);
         return driver;
     }
 
     public WebDriver getDriver(){
-        return driver;
+        return driver.get();
     }
 }
