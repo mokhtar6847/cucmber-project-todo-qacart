@@ -8,11 +8,11 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
           java-version: "17"
           cache: maven
           distribution: "temurin"
-      - uses: browser-action/setup-chrome@latest
+      - uses: browser-actions/setup-chrome@latest
       - run: mvn clean test
