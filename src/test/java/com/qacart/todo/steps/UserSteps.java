@@ -1,6 +1,6 @@
 package com.qacart.todo.steps;
 
-import com.qacart.todo.base.BasePage;
+
 import com.qacart.todo.factory.DriverFactory;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.TodoPage;
@@ -8,13 +8,9 @@ import com.qacart.todo.utils.EnvUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-
 import java.io.IOException;
-import java.time.Duration;
 
 public class UserSteps {
     WebDriver driver;
